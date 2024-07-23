@@ -1,15 +1,14 @@
-# Camunda Prometheus Exporter
-
-[![Maven Central](https://img.shields.io/maven-central/v/io.camunda/zeebe-process-test-root)](https://search.maven.org/search?q=g:io.camunda%20zeebe-process-test)
+# Camunda Prometheus Exporter 
 
 ## Introduction
 
-The Camunda Prometheus Exporter app returns metric values for the count of Docker image pulls in a DockerHub organization, running in a Kubernetes cluster. The app exposes these metrics via a Prometheus-compatible endpoint.
+The Camunda Prometheus Exporter app returns metric values for the count of Docker image pulls in a DockerHub organization. The app is implemented in Python and runs in a Docker container with adjustments for Kubernetes clusters.
 
 ## Prerequisites
 
 Ensure you have the following tools installed:
 
+- Python 3.12+
 - Docker 25.0.0+
 - kubectl 1.29+
 - kind 0.21.0
@@ -22,16 +21,23 @@ Ensure you have the following tools installed:
 
 The Prometheus Exporter app performs the following functions:
 
-- Runs on port 2113
-- Accepts the environment variable `DOCKERHUB_ORGANIZATION` to specify the DockerHub organization name
+- Runs on port 2113 by default and accepts the environment variable `PORT`
+- In order to specify the DockerHub organization name the app accepts the environment variable `DOCKERHUB_ORGANIZATION` 
 - On a GET request to `/metrics`, it returns the list of gauge metric values `docker_image_pulls` for each public Docker image in the specified organization, with the values representing the number of DockerHub image pulls.
 
 ## Setup Instructions
 
-### Dependency
+### Building and Running with Docker
 
-Install the required Python dependencies listed in `requirements.txt`:
+You need to have internet access in order to download the base Python image from the docker hub
+
+To build and run the Docker container:
 
 ```plaintext
-prometheus-client==0.15.0
-requests==2.28.2
+docker build -t camunda-prometheus-exporter .
+docker run -p 2113:2113 camunda-prometheus-exporter
+
+# Usage
+
+Once the application is running, you can access the metrics at 
+http://localhost:2113/metrics
