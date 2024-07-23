@@ -2,7 +2,7 @@
 
 ## Introduction
 
-The Camunda Prometheus Exporter app returns metric values for the count of Docker image pulls in a DockerHub organization. The app is implemented in Python and runs in a Docker container with adjustments for Kubernetes clusters.
+The Camunda Prometheus Exporter app returns metric values for the count of Docker image pulls in a DockerHub organization. The app is implemented in Python and runs in a Docker container.
 
 ## Prerequisites
 
