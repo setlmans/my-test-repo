@@ -32,8 +32,10 @@ To build and run the Docker container:
 ```plaintext
 docker build -t camunda-prometheus-exporter .
 docker run -p 2113:2113 camunda-prometheus-exporter
-
+```
 # Usage
 
 Once the application is running, you can access the metrics at 
+```
 http://localhost:2113/metrics
+```
