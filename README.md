@@ -10,11 +10,7 @@ Ensure you have the following tools installed:
 
 - Python 3.12+
 - Docker 25.0.0+
-- kubectl 1.29+
-- kind 0.21.0
-- GNU Make 3.81+
 - bash 4.2+
-- curl 8.6.0+
 - Coreutils binaries (on Linux)
 
 ## Exporter App
